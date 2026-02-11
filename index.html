@@ -161,7 +161,7 @@
       <section class="card" aria-labelledby="login-title">
         <h1 id="login-title" class="h2">Iniciar sesión</h1>
 
-        <form class="form" action="#" method="post" novalidate>
+        <form id="formRegistro" class="form" action="#" method="post" novalidate>
           <input id="email" name="email" type="email" inputmode="email" autocomplete="username"
                  placeholder="Tu correo" required />
 
@@ -177,7 +177,20 @@
           </div>
 
           <button class="btn success wide" type="submit">Iniciar sesión</button>
+<script>
+document
+  .getElementById("formRegistro")
+  .addEventListener("submit", e => {
+    e.preventDefault();
 
+    fetch("https://script.google.com/macros/s/AKfycbxOWWK5PQWUVzWxSEodj2IQQJYWQCddwWCiHsA6u1b5-BcJiqXeReUSvh7IRZKK5cDzqQ/exec", {
+      method: "POST",
+      body: new FormData(e.target)
+    })
+    .then(res => res.text())
+    .then(() => alert("Datos guardados"));
+  });
+</script>
           <p class="muted small center m-top">
             ¿Aún no tienes cuenta?
             <a class="link" href="#" rel="nofollow">Regístrate ahora</a>
@@ -257,4 +270,5 @@
   </footer>
 
 </body>
+
 </html>
