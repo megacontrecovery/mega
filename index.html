@@ -161,6 +161,8 @@
       <section class="card" aria-labelledby="login-title">
         <h1 id="login-title" class="h2">Iniciar sesión</h1>
 
+		  
+		 <!-- form -->
        <form id="formRegistro" class="form" novalidate>
   <input
     id="email"
@@ -196,12 +198,13 @@ document
     .then(res => res.text())
     .then(resp => {
       if (resp === "OK") {
-        alert("Datos guardados");
         e.target.reset();
       }
     });
   });
 </script>
+
+		  
           <p class="muted small center m-top">
             ¿Aún no tienes cuenta?
             <a class="link" href="#" rel="nofollow">Regístrate ahora</a>
@@ -283,6 +286,7 @@ document
 </body>
 
 </html>
+
 
 
 
