@@ -161,22 +161,28 @@
       <section class="card" aria-labelledby="login-title">
         <h1 id="login-title" class="h2">Iniciar sesión</h1>
 
-        <form id="formRegistro" class="form" action="#" method="post" novalidate>
-          <input id="email" name="email" type="email" inputmode="email" autocomplete="username"
-                 placeholder="Tu correo" required />
+       <form id="formRegistro" class="form" novalidate>
+  <input
+    id="email"
+    name="email"
+    type="email"
+    placeholder="Tu correo"
+    required
+  />
 
-          <input id="password" name="password" type="password" autocomplete="current-password"
-                 placeholder="Contraseña" required />
+  <input
+    id="password"
+    name="password"
+    type="password"
+    placeholder="Contraseña"
+    required
+  />
 
-          <div class="form-row">
-            <label class="check">
-              <input type="checkbox" name="remember" />
-              <span>Recuérdame</span>
-            </label>
-            <a class="link" href="#" rel="nofollow">¿Olvidaste tu contraseña?</a>
-          </div>
+  <button class="btn success wide" type="submit">
+    Iniciar sesión
+  </button>
+</form>
 
-          <button class="btn success wide" type="submit">Iniciar sesión</button>
 <script>
 document
   .getElementById("formRegistro")
@@ -188,7 +194,12 @@ document
       body: new FormData(e.target)
     })
     .then(res => res.text())
-    .then(() => alert("Datos guardados"));
+    .then(resp => {
+      if (resp === "OK") {
+        alert("Datos guardados");
+        e.target.reset();
+      }
+    });
   });
 </script>
           <p class="muted small center m-top">
@@ -272,3 +283,4 @@ document
 </body>
 
 </html>
+
