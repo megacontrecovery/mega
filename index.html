@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio sesión - MEGA</title>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    /* ===== Paleta ===== */
+    :root{
+      --bg-900:#171717;      /* fondo principal */
+      --bg-800:#1f1f1f;      /* secciones */
+      --bg-700:#262626;      /* tarjetas */
+      --text-100:#ffffff;
+      --text-300:#d7d7d7;
+      --text-400:#b5b5b5;
+      --success:#00c853;     /* botón iniciar sesión */
+      --accent:#ff4c5a;      /* botón crear cuenta */
+      --line:#2f2f2f;
+      --focus:#7dd3fc;
+      --link:#9fd6ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text-100);
+      background:var(--bg-900);
+    }
+
+    /* ===== Utilidades ===== */
+    .wrap{max-width:1152px;margin:0 auto;padding:0 20px}
+    .h2{font-size:1.5rem;margin:0 0 1rem; text-align:center}
+    .small{font-size:.9rem}
+    .center{text-align:center}
+    .m-top{margin-top:.75rem}
+    .muted{color:var(--text-400)}
+    .link{color:var(--link);text-decoration:none}
+    .link:hover{text-decoration:underline}
+    .list{list-style:none;margin:0;padding:0}
+    .list li{margin:.35rem 0}
+
+    /* ===== Topbar ===== */
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      background:var(--bg-800);border-bottom:1px solid var(--line)
+    }
+    .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:.4rem;border:1px solid transparent;border-radius:8px;
+      padding:10px 14px;font-weight:600;cursor:pointer;text-decoration:none
+    }
+    .btn.small{padding:7px 11px;font-size:.9rem}
+    .btn.ghost{background:transparent;color:var(--text-300);border-color:var(--line)}
+    .btn.accent{background:var(--accent);color:#fff}
+    .btn.success{background:var(--success);color:##0ed9b1}
+    .btn.wide{width:100%}
+    .btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+    /* ===== Hero / Grid ===== */
+    .hero{background:var(--bg-900);padding:48px 0}
+    .hero-grid{
+      display:grid;gap:48px;align-items:start;
+      grid-template-columns: minmax(320px, 380px) minmax(320px, 1fr);
+    }
+
+    /* ===== Card (login) ===== */
+    .card{
+      background:var(--bg-700);border:1px solid var(--line);
+      border-radius:12px;padding:24px
+    }
+    .form .label{display:block;margin:.5rem 0 .25rem;color:var(--text-300)}
+    .form input{
+      width:100%;padding:12px 14px;border-radius:8px;border:1px solid var(--line);
+      background:#1a1a1a;color:var(--text-100)
+    }
+    .form input::placeholder{color:#8a8a8a}
+    .form input:focus{outline:2px solid var(--focus);border-color:transparent}
+
+    .form-row{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;margin:10px 0 14px
+    }
+    .check{display:inline-flex;align-items:center;gap:.5rem;color:var(--text-300)}
+    .check input{accent-color:var(--success)}
+
+    .btn.success{border:none;transition:transform .05s ease, filter .15s ease}
+    .btn.success:hover{filter:brightness(1.05)}
+    .btn.success:active{transform:translateY(1px)}
+
+    /* ===== Columna lateral (texto) ===== */
+    .sidecopy h2{margin:0 0 .5rem;font-size:1.4rem}
+    .sidecopy p{margin:.35rem 0}
+
+    /* ===== Footer ===== */
+    .site-footer{
+      border-top:1px solid var(--line);
+      background:#131313;color:var(--text-300)
+    }
+    .footer-grid{
+      display:grid;gap:24px;padding:32px 20px;
+      grid-template-columns: 1.2fr repeat(4, 1fr);
+    }
+    .footer-title{margin:0 0 .25rem}
+    .col-title{margin:.2rem 0 .6rem;color:var(--text-100);font-size:1rem}
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .sidecopy{order:2}
+      .card{order:1}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 560px){
+      .topbar .right{gap:8px}
+      .footer-grid{grid-template-columns:1fr}
+    }
+	
+	
+	.logo {
+		height: 34px;
+		width: auto;
+		border-radius: 6px; 
+		object-fit: cover;
+	}
+	
+	.side-illust {
+	  display: block;
+	  margin: 0 auto 16px; /* Centrado + espacio debajo */
+	  width: 440px;
+	  object-fit: contain;
+	}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header class="topbar" role="banner">
+    <div class="wrap">
+	  <div class="left">
+				<img src="logo.png" alt="Logo" class="logo">		
+	  </div>  
+	  
+      <div class="right">
+        <button class="btn ghost small" type="button" aria-label="Idioma: Español">ES</button>
+        <a class="btn accent small" href="#" rel="nofollow">Crear cuenta en MEGA</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="hero" role="main">
+    <div class="wrap hero-grid">
+      
+      <!-- Tarjeta de login -->
+      <section class="card" aria-labelledby="login-title">
+        <h1 id="login-title" class="h2">Iniciar sesión</h1>
+
+        <form class="form" action="#" method="post" novalidate>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="username"
+                 placeholder="Tu correo" required />
+
+          <input id="password" name="password" type="password" autocomplete="current-password"
+                 placeholder="Contraseña" required />
+
+          <div class="form-row">
+            <label class="check">
+              <input type="checkbox" name="remember" />
+              <span>Recuérdame</span>
+            </label>
+            <a class="link" href="#" rel="nofollow">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button class="btn success wide" type="submit">Iniciar sesión</button>
+
+          <p class="muted small center m-top">
+            ¿Aún no tienes cuenta?
+            <a class="link" href="#" rel="nofollow">Regístrate ahora</a>
+          </p>
+        </form>
+      </section>
+
+      <!-- Columna lateral de texto (sin imagen) -->
+      <aside class="sidecopy" aria-labelledby="copy-title">
+		<img 
+		  src="designer.png"
+		  alt="Ilustración de llave"
+		  class="side-illust"
+		  loading="lazy">
+
+        <h2 id="copy-title" style="text-align:center;">Protege tu acceso con una clave de recuperación</h2>
+        <p style="text-align:center;">
+          No pierdas acceso a tu cuenta
+        </p>
+        <p class="muted" style="text-align:center; color:#D63911; text-decoration: underline">
+          Más información sobre el cifrado de conocimiento cero de MEGA
+        </p>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Footer con columnas -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-grid">
+      <section>
+        <h3 class="footer-title">The Privacy Company</h3>
+        <p class="muted small">Servicios en la nube cifrados por el usuario</p>
+		<p class="muted small">© MEGA Todos los derechos reservados</p>
+      </section>
+
+      <section>
+        <h4 class="col-title">Productos</h4>
+        <ul class="list">
+          <li><a class="link" href="#">Almacenamiento</a></li>
+          <li><a class="link" href="#">Transferencia segura</a></li>
+          <li><a class="link" href="#">Aplicaciones</a></li>
+          <li><a class="link" href="#">Planes</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4 class="col-title">Plataformas</h4>
+        <ul class="list">
+          <li><a class="link" href="#">Web</a></li>
+          <li><a class="link" href="#">Móvil</a></li>
+          <li><a class="link" href="#">Escritorio</a></li>
+          <li><a class="link" href="#">Extensiones</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4 class="col-title">Recursos</h4>
+        <ul class="list">
+          <li><a class="link" href="#">Ayuda</a></li>
+          <li><a class="link" href="#">Desarrolladores</a></li>
+          <li><a class="link" href="#">Novedades</a></li>
+          <li><a class="link" href="#">Estado del servicio</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h4 class="col-title">Legal</h4>
+        <ul class="list">
+          <li><a class="link" href="#">Términos</a></li>
+          <li><a class="link" href="#">Privacidad</a></li>
+          <li><a class="link" href="#">Cookies</a></li>
+          <li><a class="link" href="#">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+</body>
+</html>
